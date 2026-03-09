@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SlowPoor Café – Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- ══════════════════════════════════════════
+     HEADER / NAV 
+     ══════════════════════════════════════════ -->
+<nav class="navbar" aria-label="Main navigation">
+  <a class="navbar-brand" href="#">
+    <div class="navbar-logo" aria-hidden="true">
+      <img src="image/logo.png" alt="SlowPoor Café logo" style="width:50px; height:50px; border-radius:50%; object-fit:cover;" />
+    </div>
+    <span class="navbar-name">SlowPoor Café</span>
+  </a>
+
+  <ul class="navbar-links" role="list">
+    <li><a href="Home.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="Menu.html" class="active">Menu</a></li>
+    <li><a href="Reservation.html">Events</a></li>
+    <li><a href="Location.html">Location</a></li>
+  </ul>
+
+  <div class="navbar-search" role="search">
+    <input type="search" id="navSearch" placeholder="Search in site" aria-label="Search in site" />
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </div>
+</nav>
+
+<div id="searchDropdown" style="
+  position:fixed; top:64px; right:40px;
+  background:#fff; border:1px solid #e8e3db;
+  border-radius:12px; box-shadow:0 8px 32px rgba(43,26,15,0.15);
+  z-index:200; min-width:280px; max-height:360px;
+  overflow-y:auto; display:none;
+"></div>
+
+<body>
+
+<!-- ══════════════════════════════════════════
+     MAIN CONTENT
+     ══════════════════════════════════════════ -->
+<main id="specialties">
+
+  <!-- ── OUR SPECIALTIES HEADER ── -->
+  <section class="specialties" aria-label="Our Specialties">
+    <h2>Our Specialties</h2>
+    <p class="subtitle">Discover our range of beverages and foods.</p>
+
+    <button class="order-btn" onclick="showOrderToast()">
+      Order Now
+    </button>
+
+    <!-- ── Filter Tabs ── -->
+    <div class="menu-tabs" role="tablist" aria-label="Filter menu items">
+      <button class="tab-btn active" data-filter="all"       onclick="filterMenu('all')"       role="tab">All</button>
+      <button class="tab-btn"        data-filter="coffee"    onclick="filterMenu('coffee')"    role="tab">Coffee</button>
+      <button class="tab-btn"        data-filter="noncoffee" onclick="filterMenu('noncoffee')" role="tab">Non-Coffee</button>
+      <button class="tab-btn"        data-filter="foods"     onclick="filterMenu('foods')"     role="tab">Foods</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         PRODUCT GRID  (combined: all categories)
+         ══════════════════════════════════════════ -->
+    <div class="grid-container" id="productGrid" aria-label="Menu items">
+
+      <!-- ─────────────────────────────
+           COFFEE 
+           ───────────────────────────── -->
+      <article class="card" data-category="coffee">
+        <div class="image-placeholder">
+          <img src="https://hottable.pk/wp-content/uploads/2025/12/Americano.jpg" alt="Espresso – a rich bold shot of coffee" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Espresso</h3>
+          <p>₱70.00</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="coffee">
+        <div class="image-placeholder">
+          <img src="https://miro.medium.com/1*CSYSbFyvRY3E3BCL-5QsvA.jpeg" alt="Iced Latte – espresso over ice with milk" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Iced Latte</h3>
+          <p>₱90.00</p>
+        </div>
+      </article>
+
+      <!-- ─────────────────────────────
+           NON-COFFEE
+           ───────────────────────────── -->
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/88/38/f6/8838f69b04b8099b2fb63f4445e75fb5.jpg"
+               alt="Matcha Latte – vibrant green ceremonial matcha" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Matcha Latte</h3>
+          <p>₱220</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/1200x/5c/57/a5/5c57a59bfdb569fc3f31d18592e4f5d7.jpg"
+               alt="Spiced Chai – warm aromatic chai tea latte" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Spiced Chai</h3>
+          <p>₱195</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/1200x/83/f1/73/83f173722744e0513287a0fac4892b08.jpg"
+               alt="Hot Chocolate – rich creamy cocoa drink" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Hot Chocolate</h3>
+          <p>₱200</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/f6/cf/21/f6cf211cb21a36cf64480f0ef6e60a71.jpg"
+               alt="Hibiscus – floral iced hibiscus tea drink" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Hibiscus</h3>
+          <p>₱175</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/1200x/ef/26/1b/ef261bc9d15cce5bb8f0d36eb01b5fa4.jpg"
+               alt="Lemonade – fresh-squeezed chilled lemonade" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Lemonade</h3>
+          <p>₱150</p>
+        </div>
+      </article>
+
+      <!-- ─────────────────────────────
+           FOODS 
+           ───────────────────────────── -->
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/4e/98/a2/4e98a235df32af5061f37b94cacd0b90.jpg" alt="Croissant – buttery flaky French pastry" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Croissant</h3>
+          <p>₱125</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/2b/c6/c2/2bc6c24915879c1ade148513cec6e687.jpg"
+               alt="Flat Bread – crispy topped flatbread snack" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Flat Bread</h3>
+          <p>₱115</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/76/f7/cb/76f7cb1e35f0703e669eb1e0d79342e6.jpg"
+               alt="Blueberry Cheesecake – creamy blueberry topped cheesecake" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Blueberry Cheesecake</h3>
+          <p>₱190</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/ea/a5/e7/eaa5e72aae2c42d4ae9b4fbd726d6135.jpg"
+               alt="Lasagna – hearty baked meat and cheese lasagna" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Lasagna</h3>
+          <p>₱225</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://i.pinimg.com/736x/0a/5a/5d/0a5a5df6b070463dff3afdca679852db.jpg"
+               alt="Overnight Oats – healthy chilled oats with toppings" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Overnight Oats</h3>
+          <p>₱130</p>
+        </div>
+      </article>
+
+      <!-- ─────────────────────────────
+           SPECIALTIES
+           ───────────────────────────── -->
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://cdn11.bigcommerce.com/s-ek50668lzs/images/stencil/1280x1280/products/3231/3495/new2466_2104_detail__58361.1577657646.jpg?c=1?imbypass=on" alt="Chocolate Cake – rich moist chocolate layer cake" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Chocolate Cake</h3>
+          <p>₱115.00</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="noncoffee">
+        <div class="image-placeholder">
+          <img src="https://png.pngtree.com/png-vector/20240224/ourmid/pngtree-fresh-herbal-tea-cup-with-mint-isolate-png-image_11875088.png" alt="Herbal Tea – a soothing blend of herbal tea" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Herbal Tea</h3>
+          <p>₱75.00</p>
+        </div>
+      </article>
+
+      <article class="card" data-category="foods">
+        <div class="image-placeholder">
+          <img src="https://png.pngtree.com/png-clipart/20241129/original/pngtree-tiramisu-cake-png-image_17407912.png" alt="Tiramisu Cake – classic Italian espresso dessert" class="card-img" />
+        </div>
+        <div class="card-info">
+          <h3>Tiramisu Cake</h3>
+          <p>₱115.00</p>
+        </div>
+      </article>
+
+    </div><!-- /grid-container -->
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       IMAGE MAP  
+       ══════════════════════════════════════════ -->
+  <section class="imagemap-section" aria-label="Café zone map">
+    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=960&q=80"
+         alt="SlowPoor Café interior – click zones to explore"
+         usemap="#cafeMap"
+         id="cafeImg" />
+    <map name="cafeMap">
+      <area shape="rect" coords="0,0,320,320"    href="#specialties" alt="Menu Area"    title="📋 View Menu" />
+      <area shape="rect" coords="320,0,640,320"  href="#reservation" alt="Seating Area" title="🪑 Book a Table" />
+      <area shape="rect" coords="640,0,960,320"  href="#allergens"   alt="Bar Area"     title="☕ Our Bar" />
+    </map>
+    <p class="imagemap-caption">🗺️ Click different areas of our café to explore — Menu Zone · Seating Zone · Bar Zone</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FULL MENU PRICE TABLE
+       ══════════════════════════════════════════ -->
+  <section class="table-section" aria-label="Full menu price list">
+    <h2>Full Menu Price List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Calories</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Coffee -->
+        <tr><td>Espresso</td>         <td>Coffee</td>     <td>Single</td>    <td>₱70.00</td>  <td>5 kcal</td></tr>
+        <tr><td>Iced Latte</td>       <td>Coffee</td>     <td>12 oz</td>     <td>₱90.00</td>  <td>120 kcal</td></tr>
+        <!-- Non-Coffee -->
+        <tr><td>Matcha Latte</td>     <td>Non-Coffee</td> <td>12 oz</td>     <td>₱220</td>    <td>140 kcal</td></tr>
+        <tr><td>Spiced Chai</td>      <td>Non-Coffee</td> <td>12 oz</td>     <td>₱195</td>    <td>160 kcal</td></tr>
+        <tr><td>Hot Chocolate</td>    <td>Non-Coffee</td> <td>12 oz</td>     <td>₱200</td>    <td>210 kcal</td></tr>
+        <tr><td>Hibiscus</td>         <td>Non-Coffee</td> <td>12 oz</td>     <td>₱175</td>    <td>60 kcal</td></tr>
+        <tr><td>Lemonade</td>         <td>Non-Coffee</td> <td>12 oz</td>     <td>₱150</td>    <td>90 kcal</td></tr>
+        <tr><td>Herbal Tea</td>       <td>Non-Coffee</td> <td>12 oz</td>     <td>₱75.00</td>  <td>5 kcal</td></tr>
+        <!-- Foods -->
+        <tr><td>Croissant</td>            <td>Foods</td>  <td>1 pc</td>      <td>₱125</td>    <td>230 kcal</td></tr>
+        <tr><td>Flat Bread</td>           <td>Foods</td>  <td>1 pc</td>      <td>₱115</td>    <td>310 kcal</td></tr>
+        <tr><td>Blueberry Cheesecake</td> <td>Foods</td>  <td>1 slice</td>   <td>₱190</td>    <td>420 kcal</td></tr>
+        <tr><td>Lasagna</td>              <td>Foods</td>  <td>1 portion</td> <td>₱225</td>    <td>560 kcal</td></tr>
+        <tr><td>Overnight Oats</td>       <td>Foods</td>  <td>1 bowl</td>    <td>₱130</td>    <td>350 kcal</td></tr>
+        <tr><td>Chocolate Cake</td>       <td>Foods</td>  <td>1 slice</td>   <td>₱115.00</td> <td>390 kcal</td></tr>
+        <tr><td>Tiramisu Cake</td>        <td>Foods</td>  <td>1 slice</td>   <td>₱115.00</td> <td>370 kcal</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ALLERGEN INFORMATION  
+       ══════════════════════════════════════════ -->
+  <section class="allergen-section" id="allergens" aria-label="Allergen information">
+    <h2>Allergen Information</h2>
+    <p class="allergen-note">Items on our menu may contain the following allergens. Please inform our staff of any dietary requirements.</p>
+    <ul>
+      <li>Gluten (Croissant, Flat Bread, Lasagna, Tiramisu Cake)</li>
+      <li>Dairy (Matcha Latte, Spiced Chai, Hot Chocolate, Lasagna, Cheesecake, Chocolate Cake)</li>
+      <li>Eggs (Lasagna, Cheesecake, Tiramisu Cake)</li>
+      <li>Nuts (Overnight Oats – optional toppings)</li>
+      <li>Soy (Matcha Latte – if oat milk substituted)</li>
+      <li>Gluten-free options available on request</li>
+      <li>Vegan-friendly: Hibiscus, Lemonade, Overnight Oats (base)</li>
+      <li>All items prepared in a shared kitchen</li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- Coming Soon Toast -->
+<div id="orderToast" role="status" aria-live="polite" style="
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #2b1a0f;
+  color: #f5f0e8;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+  z-index: 999;
+  white-space: nowrap;
+">☕ Online ordering coming soon — visit us in store!</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 SlowPoor Café. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://www.facebook.com/profile.php?id=61580804151427">Follow us on social media</a>
+      <a href="#">Subscribe to our newsletter for updates</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function showOrderToast() {
+    const toast = document.getElementById('orderToast');
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(80px)';
+    }, 3500);
+  }
+
+  function filterMenu(filter) {
+    document.querySelectorAll('.card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === filter);
+    });
+  }
+
+  // ── SEARCH DROPDOWN ──
+  const navSearch  = document.getElementById('navSearch');
+  const dropdown   = document.getElementById('searchDropdown');
+
+  function getItems() {
+    return Array.from(document.querySelectorAll('.card')).map(card => ({
+      name:     card.querySelector('h3').textContent,
+      price:    card.querySelector('.card-info p').textContent,
+      category: card.dataset.category,
+      img:      card.querySelector('.card-img').src,
+      el:       card
+    }));
+  }
+
+  function highlight(text, q) {
+    return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),
+      '<span style="color:#6b4226;font-weight:600;">$1</span>');
+  }
+
+  function showDropdown(q) {
+    if (!q) { dropdown.style.display = 'none'; return; }
+    const results = getItems().filter(i =>
+      i.name.toLowerCase().includes(q) ||
+      i.category.toLowerCase().includes(q) ||
+      i.price.toLowerCase().includes(q)
+    );
+    if (!results.length) {
+      dropdown.innerHTML = '<div style="padding:16px;text-align:center;color:#9a8778;font-size:0.88rem;">No results found for "<strong>' + q + '"</strong></div>';
+    } else {
+      dropdown.innerHTML = results.map((item, i) => `
+        <div data-i="${i}" style="display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f0ebe3;transition:background .15s;" onmouseover="this.style.background='#faf7f2'" onmouseout="this.style.background=''">
+          <img src="${item.img}" style="width:40px;height:40px;object-fit:cover;border-radius:8px;flex-shrink:0;" onerror="this.style.display='none'" />
+          <div style="display:flex;flex-direction:column;">
+            <span style="font-size:0.9rem;font-weight:500;color:#2b1a0f;">${highlight(item.name, q)}</span>
+            <span style="font-size:0.78rem;color:#9a8778;">${item.category} · ${item.price}</span>
+          </div>
+        </div>
+      `).join('');
+      dropdown.querySelectorAll('[data-i]').forEach(el => {
+        el.addEventListener('click', () => {
+          const item = results[+el.dataset.i];
+          filterMenu('all');
+          item.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          item.el.style.outline = '3px solid #c9a87c';
+          item.el.style.borderRadius = '12px';
+          setTimeout(() => item.el.style.outline = '', 2000);
+          dropdown.style.display = 'none';
+          navSearch.value = '';
+        });
+      });
+    }
+    dropdown.style.display = 'block';
+  }
+
+  navSearch.addEventListener('input', e => showDropdown(e.target.value.trim().toLowerCase()));
+  navSearch.addEventListener('keydown', e => {
+    if (e.key === 'Escape') dropdown.style.display = 'none';
+    if (e.key === 'Enter') {
+      const first = dropdown.querySelector('[data-i]');
+      if (first) first.click();
+    }
+  });
+  document.addEventListener('click', e => {
+    if (!navSearch.contains(e.target) && !dropdown.contains(e.target))
+      dropdown.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

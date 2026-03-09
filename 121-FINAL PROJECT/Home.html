@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SlowPoor Café – Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ══════════════════════════════════════════
+       HOME PAGE STYLES
+    ══════════════════════════════════════════ */
+
+    /* ── Hero ── */
+    .home-hero {
+      position: relative;
+      background: linear-gradient(135deg, #2b1a0f 0%, #6b4226 50%, #9a7050 100%);
+      color: #f5f0e8;
+      text-align: center;
+      padding: 110px 24px 90px;
+      overflow: hidden;
+    }
+
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .home-hero-inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .home-hero-label {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c9a87c;
+      margin-bottom: 18px;
+    }
+
+    .home-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #f5f0e8;
+    }
+
+    .home-hero p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      opacity: 0.85;
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #c9a87c;
+      color: #2b1a0f;
+      padding: 14px 36px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #e0c090;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #f5f0e8;
+      padding: 13px 36px;
+      border: 1.5px solid rgba(245,240,232,0.5);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, transform .15s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: #c9a87c;
+      color: #c9a87c;
+      transform: translateY(-2px);
+    }
+
+    /* ── About strip ── */
+    .home-about {
+      background: #f5f0e8;
+      padding: 80px 24px;
+    }
+
+    .home-about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .home-about-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(43,26,15,0.15);
+      aspect-ratio: 4/3;
+    }
+
+    .home-about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .home-about-text .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a87c;
+      margin-bottom: 12px;
+    }
+
+    .home-about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: #2b1a0f;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .home-about-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      color: #6b4226;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .home-about-text p:last-of-type { margin-bottom: 28px; }
+
+    /* ── Features row ── */
+    .home-features {
+      background: #faf7f2;
+      padding: 80px 24px;
+    }
+
+    .home-features-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .home-features-inner .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a87c;
+      margin-bottom: 12px;
+    }
+
+    .home-features-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #2b1a0f;
+      margin-bottom: 48px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px;
+      border: 1px solid #e8e3db;
+      box-shadow: 0 2px 16px rgba(43,26,15,0.06);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(43,26,15,0.12);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: #2b1a0f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #c9a87c;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #2b1a0f;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: #9a8778;
+      line-height: 1.7;
+    }
+
+    /* ── Featured Menu ── */
+    .home-menu {
+      background: #f5f0e8;
+      padding: 80px 24px;
+    }
+
+    .home-menu-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .home-menu-inner .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a87c;
+      margin-bottom: 12px;
+    }
+
+    .home-menu-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #2b1a0f;
+      margin-bottom: 14px;
+    }
+
+    .home-menu-inner > p {
+      font-family: 'DM Sans', sans-serif;
+      color: #9a8778;
+      margin-bottom: 48px;
+      font-size: 0.97rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .featured-item {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e8e3db;
+      box-shadow: 0 2px 12px rgba(43,26,15,0.06);
+      transition: transform .25s, box-shadow .25s;
+      text-align: left;
+    }
+
+    .featured-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(43,26,15,0.12);
+    }
+
+    .featured-item-img {
+      height: 190px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: #faf7f2;
+    }
+
+    .featured-item-img img {
+      width: auto;
+      max-width: 100%;
+      height: 100%;
+      max-height: 165px;
+      object-fit: contain;
+    }
+
+    .featured-item-info {
+      padding: 16px 18px;
+    }
+
+    .featured-item-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #2b1a0f;
+      margin-bottom: 4px;
+    }
+
+    .featured-item-info p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: #c9a87c;
+      font-weight: 600;
+    }
+
+    /* ── Visit us CTA ── */
+    .home-cta {
+      background: linear-gradient(135deg, #2b1a0f 0%, #6b4226 100%);
+      padding: 90px 24px;
+      text-align: center;
+      color: #f5f0e8;
+    }
+
+    .home-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 14px;
+    }
+
+    .home-cta p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .home-about-inner { grid-template-columns: 1fr; gap: 36px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+     ══════════════════════════════════════════ -->
+<nav class="navbar" aria-label="Main navigation">
+  <a class="navbar-brand" href="Home.html">
+    <div class="navbar-logo" aria-hidden="true">
+      <img src="image/logo.png" alt="SlowPoor Café logo" style="width:50px;height:50px;border-radius:50%;object-fit:cover;" />
+    </div>
+    <span class="navbar-name">SlowPoor Café</span>
+  </a>
+
+  <ul class="navbar-links" role="list">
+    <li><a href="Home.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="Menu.html">Menu</a></li>
+    <li><a href="Reservation.html">Events</a></li>
+    <li><a href="Location.html">Location</a></li>
+  </ul>
+
+  <div class="navbar-search" role="search">
+    <input type="search" placeholder="Search in site" aria-label="Search in site" />
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     HERO SECTION
+     ══════════════════════════════════════════ -->
+<section class="home-hero" aria-label="Hero banner">
+  <div class="home-hero-inner">
+    <span class="home-hero-label">Welcome to SlowPoor Café</span>
+    <h1>Good Coffee.<br>Slow Mornings.<br>Good Company.</h1>
+    <p>Your cozy neighbourhood escape tucked in Circuit Makati — where every cup is made with care and every visit feels like home.</p>
+    <div class="hero-btns">
+      <a href="Menu.html" class="btn-primary">Explore Menu</a>
+      <a href="Reservation.html" class="btn-outline">Book a Table</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT STRIP
+     ══════════════════════════════════════════ -->
+<section class="home-about" aria-label="About us preview">
+  <div class="home-about-inner">
+
+    <div class="home-about-img">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80"
+           alt="SlowPoor Café interior" />
+    </div>
+
+    <div class="home-about-text">
+      <p class="section-label">Our Story</p>
+      <h2>More Than a Cup of Coffee</h2>
+      <p>SlowPoor began as a small idea between two friends who loved coffee. We believe every cup tells a story — from the farmers who grow the beans to the baristas who prepare them.</p>
+      <p>We opened our doors in 2026 with a simple promise: make good coffee and take the time to do it right.</p>
+      <a href="about.html" class="btn-primary">Learn More About Us</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FEATURES
+     ══════════════════════════════════════════ -->
+<section class="home-features" aria-label="Why choose us">
+  <div class="home-features-inner">
+    <p class="section-label">Why SlowPoor</p>
+    <h2>A Place to Slow Down</h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+        </div>
+        <h3>Craft Coffee</h3>
+        <p>Every drink is prepared carefully by our skilled baristas using premium, ethically sourced beans.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+        </div>
+        <h3>Cozy Location</h3>
+        <p>Tucked inside Circuit Makati — a neighbourhood escape perfect for slow mornings and long conversations.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <h3>Community First</h3>
+        <p>Our café is a place for everyone — whether you're studying, meeting friends, or just taking a break.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FEATURED MENU ITEMS
+     ══════════════════════════════════════════ -->
+<section class="home-menu" aria-label="Featured menu items">
+  <div class="home-menu-inner">
+    <p class="section-label">Our Specialties</p>
+    <h2>A Taste of What We Offer</h2>
+    <p>From rich espressos to fresh pastries — there's something for everyone.</p>
+
+    <div class="featured-grid">
+
+      <div class="featured-item">
+        <div class="featured-item-img">
+          <img src="https://png.pngtree.com/png-vector/20240821/ourmid/pngtree-top-americano-coffee-png-image_13268231.png" alt="Espresso" />
+        </div>
+        <div class="featured-item-info">
+          <h3>Espresso</h3>
+          <p>₱70.00</p>
+        </div>
+      </div>
+
+      <div class="featured-item">
+        <div class="featured-item-img">
+          <img src="https://i.pinimg.com/736x/88/38/f6/8838f69b04b8099b2fb63f4445e75fb5.jpg" alt="Matcha Latte" />
+        </div>
+        <div class="featured-item-info">
+          <h3>Matcha Latte</h3>
+          <p>₱220.00</p>
+        </div>
+      </div>
+
+      <div class="featured-item">
+        <div class="featured-item-img">
+          <img src="https://i.pinimg.com/736x/4e/98/a2/4e98a235df32af5061f37b94cacd0b90.jpg" alt="Croissant" />
+        </div>
+        <div class="featured-item-info">
+          <h3>Croissant</h3>
+          <p>₱125.00</p>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="Menu.html" class="btn-primary">View Full Menu</a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CTA SECTION
+     ══════════════════════════════════════════ -->
+<section class="home-cta" aria-label="Visit us call to action">
+  <h2>Come Visit Us Today</h2>
+  <p>Open daily at Circuit Makati. Reserve a table or just walk in — we'll have a cup ready for you.</p>
+  <div class="cta-btns">
+    <a href="Location.html" class="btn-primary">Find Us</a>
+    <a href="Reservation.html" class="btn-outline">Make a Reservation</a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 SlowPoor Café. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://www.facebook.com/profile.php?id=61580804151427">Follow us on social media</a>
+      <a href="#">Subscribe to our newsletter for updates</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

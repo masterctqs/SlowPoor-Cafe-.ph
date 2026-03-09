@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – SlowPoor Café</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── About page styles ── */
+    .about-hero {
+      background: linear-gradient(135deg, #3b2314 0%, #696969 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+    .about-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .about-hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      font-style: italic;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .about-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 30px;
+    }
+
+    .about-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(43,26,15,0.08);
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      border-left: 4px solid #c9a87c;
+    }
+
+    .about-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #2b1a0f;
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      font-family: 'DM Sans', sans-serif;
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 12px;
+      font-size: 0.97rem;
+    }
+
+    .about-card p:last-child { margin-bottom: 0; }
+
+    .values-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .values-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #444;
+      background: #faf7f2;
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .values-list li::before {
+      content: '☕';
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .values-list b {
+      color: #2b1a0f;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .values-list { grid-template-columns: 1fr; }
+      .about-card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR — same as Menu & Location
+     ══════════════════════════════════════════ -->
+<nav class="navbar" aria-label="Main navigation">
+  <a class="navbar-brand" href="Home.html">
+    <div class="navbar-logo" aria-hidden="true">
+      <img src="image/logo.png" alt="SlowPoor Café logo" style="width:50px;height:50px;border-radius:50%;object-fit:cover;" />
+    </div>
+    <span class="navbar-name">SlowPoor Café</span>
+  </a>
+
+  <ul class="navbar-links" role="list">
+    <li><a href="Home.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="Menu.html">Menu</a></li>
+    <li><a href="Reservation.html">Events</a></li>
+    <li><a href="Location.html">Location</a></li>
+  </ul>
+
+  <div class="navbar-search" role="search">
+    <input type="search" id="navSearch" placeholder="Search in site" aria-label="Search in site" />
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<div class="about-hero">
+  <h1>About SlowPoor Cafe</h1>
+  <p>More than a cup. It's a ritual.</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CONTENT (untouched text, better layout)
+     ══════════════════════════════════════════ -->
+<div class="about-body">
+
+  <div class="about-card">
+    <h2>Who We Are</h2>
+    <p>
+      SlowPoor began as a small idea between two friends who loved coffee.
+      We believe every cup tells a story, from the farmers who grow the beans
+      to the baristas who prepare them.
+    </p>
+    <p>
+      We opened our doors in 2026 with a simple promise:
+      make good coffee and take the time to do it right.
+    </p>
+    <p>
+      Today our cafe has become a place where people relax,
+      study, and meet friends while enjoying quality coffee.
+    </p>
+  </div>
+
+  <div class="about-card">
+    <h2>Our Values</h2>
+    <ul class="values-list">
+      <li><div><b>Craft First</b>Every drink is made carefully.</div></li>
+      <li><div><b>Ethical Sourcing</b>We support coffee farmers.</div></li>
+      <li><div><b>Community</b>Our cafe is a place for everyone.</div></li>
+      <li><div><b>Sustainability</b>We try to reduce waste.</div></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER — same as Menu & Location
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 SlowPoor Café. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://www.facebook.com/profile.php?id=61580804151427">Follow us on social media</a>
+      <a href="#">Subscribe to our newsletter for updates</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

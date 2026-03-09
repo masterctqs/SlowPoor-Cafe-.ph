@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SlowPoor Café – Location & Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #f5f0e8;
+      --espresso: #2b1a0f;
+      --mocha:    #6b4226;
+      --latte:    #c9a87c;
+      --foam:     #faf7f2;
+      --gray:     #e8e3db;
+      --text:     #3d2b1f;
+      --muted:    #9a8778;
+      --radius:   12px;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background: var(--foam);
+      color: var(--text);
+    }
+
+    /* ── NAVBAR DESIGN ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--espresso);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(43,26,15,0.18);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .navbar-logo {
+      width: 50px;
+      height: 50px;
+      background: var(--latte);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .navbar-logo svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--espresso);
+    }
+
+    .navbar-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      display: inline-block;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.75);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background .2s, color .2s;
+    }
+
+    .navbar-links a:hover {
+      background: rgba(201,168,124,0.15);
+      color: var(--cream);
+    }
+
+    .navbar-links a.active {
+      color: var(--latte);
+      font-weight: 500;
+    }
+
+    .navbar-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(201,168,124,0.2);
+      border-radius: 20px;
+      padding: 6px 14px;
+    }
+
+    .navbar-search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      color: var(--cream);
+      width: 110px;
+      padding: 0;
+    }
+
+    .navbar-search input::placeholder { color: rgba(245,240,232,0.4); }
+
+    .navbar-search svg {
+      width: 15px;
+      height: 15px;
+      fill: rgba(201,168,124,0.7);
+      flex-shrink: 0;
+    }
+
+    /* Mobile hamburger */
+    .navbar-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .navbar-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+    }
+
+    .navbar-drawer {
+      display: none;
+      flex-direction: column;
+      background: var(--espresso);
+      padding: 8px 24px 20px;
+      border-top: 1px solid rgba(201,168,124,0.12);
+    }
+
+    .navbar-drawer a {
+      padding: 12px 0;
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.75);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color .2s;
+    }
+
+    .navbar-drawer a:last-of-type { border-bottom: none; }
+    .navbar-drawer a:hover { color: var(--latte); }
+
+    @media (max-width: 820px) {
+      .navbar { padding: 0 20px; }
+      .navbar-links, .navbar-search { display: none; }
+      .navbar-hamburger { display: flex; }
+      .navbar-drawer.open { display: flex; }
+
+      /* existing responsive rules */
+      .location-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 96px 24px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--latte);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* ────────────────────────────
+       LOCATION SECTION
+    ──────────────────────────── */
+    #location {
+      background: var(--cream);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    /* Map embed */
+    .map-wrapper {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(43,26,15,0.12);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Info cards */
+    .location-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-card {
+      background: var(--foam);
+      border: 1px solid var(--gray);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: box-shadow .25s;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 4px 20px rgba(107,66,38,0.10);
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--espresso);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--latte);
+    }
+
+    .info-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--espresso);
+      margin-bottom: 4px;
+    }
+
+    .info-body p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .directions-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--mocha);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: gap .2s;
+    }
+
+    .directions-btn:hover { gap: 12px; }
+
+    /* ────────────────────────────
+       CONTACT SECTION
+    ──────────────────────────── */
+    #contact {
+      background: var(--foam);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    /* Contact details */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--cream);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(107,66,38,0.10);
+    }
+
+    .contact-card .info-icon {
+      background: var(--latte);
+    }
+
+    .contact-card .info-icon svg { fill: var(--espresso); }
+
+    .contact-card h3 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-card p, .contact-card a {
+      font-size: 0.95rem;
+      color: var(--espresso);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover { color: var(--mocha); }
+
+    /* Social row */
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: var(--espresso);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .social-link:hover {
+      background: var(--mocha);
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--latte);
+    }
+
+    .social-coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .social-link.dimmed {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .coming-soon-badge {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Contact Form */
+    .contact-form-wrap {
+      background: var(--cream);
+      border: 1px solid var(--gray);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+    }
+
+    .contact-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--espresso);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, textarea, select {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--foam);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      width: 100%;
+    }
+
+    input::placeholder, textarea::placeholder { color: #bbb; }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--latte);
+      box-shadow: 0 0 0 3px rgba(201,168,124,0.15);
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--espresso);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background: var(--mocha);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid #ddd;
+    padding: 18px 40px;
+    }
+
+    .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+    .footer-inner a { margin: 0 10px; transition: color 0.2s; }
+    .footer-inner a:hover { color: var(--dark); }
+
+
+    /* Success toast */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--espresso);
+      color: var(--cream);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── Validation ── */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-7px); }
+      40%       { transform: translateX(7px); }
+      60%       { transform: translateX(-5px); }
+      80%       { transform: translateX(5px); }
+    }
+
+    .field-error input,
+    .field-error textarea,
+    .field-error select {
+      border-color: #c0392b !important;
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.15) !important;
+      animation: shake 0.4s ease;
+    }
+
+    .error-msg {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: #c0392b;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════
+       NAVBAR
+  ════════════════════════════ -->
+  <nav class="navbar" aria-label="Main navigation">
+    <a class="navbar-brand" href="#">
+      <div class="navbar-logo" aria-hidden="true">
+        <img src="image/logo.png" alt="SlowPoor Café logo" style="width:50px; height:50px; border-radius:50%; object-fit:cover;" />
+      </div>
+      <span class="navbar-name">SlowPoor Café</span>
+    </a>
+
+    <ul class="navbar-links" role="list">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="Menu.html">Menu</a></li>
+      <li><a href="Reservation.html">Events</a></li>
+      <li><a href="#location" class="active">Location</a></li>
+    </ul>
+
+    <div class="navbar-search" role="search">
+      <input type="search" id="navSearch" placeholder="Search in site" aria-label="Search in site" />
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    </div>
+
+    <button class="navbar-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="navbar-drawer" id="mobileDrawer">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Menu</a>
+    <a href="#">Events</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+
+  <!-- ── Search Dropdown (added only) ── -->
+  <div id="searchDropdown" style="
+    position:fixed; top:64px; right:40px;
+    background:#fff; border:1px solid #e8e3db;
+    border-radius:12px; box-shadow:0 8px 32px rgba(43,26,15,0.15);
+    z-index:200; min-width:280px; max-height:360px;
+    overflow-y:auto; display:none;
+  "></div>
+
+  <!-- ════════════════════════════
+       LOCATION SECTION
+  ════════════════════════════ -->
+  <section id="location" aria-labelledby="location-heading">
+    <div class="section-inner">
+
+      <header>
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title" id="location-heading">Our Location</h2>
+        <p class="section-sub">Tucked inside the heart of Makati's Circuit district — your neighbourhood escape for slow mornings and good coffee.</p>
+      </header>
+
+      <div class="location-grid">
+
+        <!-- Map -->
+        <figure class="map-wrapper" aria-label="Map showing SlowPoor Café at Circuit Makati">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4183.247046229026!2d121.01698587544821!3d14.572912485910168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9a4c3bd6e31%3A0x82cd1c6ad319db5e!2sAyala%20Malls%20Circuit!5e1!3m2!1sen!2sph!4v1773064200864!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="SlowPoor Café location at Circuit Makati">
+          </iframe>
+        </figure>
+
+        <!-- Info cards -->
+        <aside class="location-info" aria-label="Location details">
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+            </div>
+            <div class="info-body">
+              <h3>Address</h3>
+              <p>Circuit Makati, Barangay Carmona<br>Makati City, Metro Manila, Philippines</p>
+              <a class="directions-btn" href="https://maps.google.com/?q=Circuit+Makati" target="_blank" rel="noopener">
+                Get Directions →
+              </a>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            </div>
+            <div class="info-body">
+              <h3>Opening Hours</h3>
+              <p>
+                Mon – Fri: 7:00 AM – 9:00 PM<br>
+                Sat – Sun: 8:00 AM – 10:00 PM<br>
+                Holidays: 9:00 AM – 8:00 PM
+              </p>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            </div>
+            <div class="info-body">
+              <h3>Parking & Access</h3>
+              <p>Free parking available at Circuit Makati.<br>Accessible via MRT-3 (Magallanes Station) + 10-min ride.</p>
+            </div>
+          </article>
+
+        </aside>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════
+       CONTACT SECTION
+  ════════════════════════════ -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="section-inner">
+
+      <header>
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title" id="contact-heading">Contact Us</h2>
+        <p class="section-sub">We'd love to hear from you — whether it's a reservation, feedback, or just to say hello.</p>
+      </header>
+
+      <div class="contact-grid">
+
+        <!-- Left: contact details -->
+        <aside aria-label="Contact information">
+          <div class="contact-details">
+
+            <article class="contact-card">
+              <div class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6.5A1 1 0 014 5.5h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/></svg>
+              </div>
+              <div>
+                <h3>Phone</h3>
+                <a href="tel:+6328001234"><p>+63 2 800 1234</p></a>
+              </div>
+            </article>
+
+            <article class="contact-card">
+              <div class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div>
+                <h3>Email</h3>
+                <a href="/cdn-cgi/l/email-protection#79111c151516390a15160e0916160b1a181f1c571a1614"><p><span class="__cf_email__" data-cfemail="68000d040407281b04071f1807071a0b090e0d460b0705">[email&#160;protected]</span></p></a>              </div>
+            </article>
+
+            <article class="contact-card">
+              <div class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+              </div>
+              <div>
+                <h3>Address</h3>
+                <p>Circuit Makati, Makati City</p>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Social links -->
+          <nav aria-label="Social media links" style="margin-top:28px;">
+            <p style="font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Follow Us</p>
+            <div class="social-row">
+
+              <!-- Facebook -->
+              <a class="social-link" href="https://www.facebook.com/profile.php?id=61580804151427" aria-label="Facebook" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+
+              <!-- Instagram -->
+              <div class="social-coming-soon">
+                <a class="social-link dimmed" href="#" aria-label="Instagram - Coming Soon" onclick="return false;">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="var(--espresso)"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="var(--espresso)" stroke-width="2"/></svg>
+                </a>
+                <span class="coming-soon-badge">Coming Soon</span>
+              </div>
+
+              <!-- TikTok -->
+              <div class="social-coming-soon">
+                <a class="social-link dimmed" href="#" aria-label="TikTok - Coming Soon" onclick="return false;">
+                  <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.07a8.16 8.16 0 004.77 1.52V7.14a4.85 4.85 0 01-1-.45z"/></svg>
+                </a>
+                <span class="coming-soon-badge">Coming Soon</span>
+              </div>
+
+            </div>
+          </nav>
+        </aside>
+
+        <!-- Right: contact form -->
+        <div class="contact-form-wrap">
+          <h3>Send Us a Message</h3>
+
+          <form id="contactForm" novalidate aria-label="Contact form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Juan" required autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="dela Cruz" required autocomplete="family-name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="juan@email.com" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="reservation">Table Reservation</option>
+                <option value="feedback">Feedback</option>
+                <option value="catering">Catering Inquiry</option>
+                <option value="events">Private Events</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div id="toast" role="status" aria-live="polite">✓ Message sent! We'll get back to you soon.</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 SlowPoor Café. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://www.facebook.com/profile.php?id=61580804151427">Follow us on social media</a>]
+      <a href="#">Subscribe to our newsletter for updates</a>
+    </div>
+  </div>
+</footer>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const requiredFields = [
+        { id: 'firstName', msg: 'Please enter your first name.' },
+        { id: 'lastName',  msg: 'Please enter your last name.' },
+        { id: 'email',     msg: 'Please enter your email address.' },
+        { id: 'subject',   msg: 'Please select a subject.' },
+        { id: 'message',   msg: 'Please write a message.' },
+      ];
+
+      // Clear previous errors
+      document.querySelectorAll('.error-msg').forEach(el => el.remove());
+      document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+
+      let hasError = false;
+
+      requiredFields.forEach(({ id, msg }) => {
+        const input = document.getElementById(id);
+        if (!input.value.trim()) {
+          const group = input.closest('.form-group');
+          group.classList.add('field-error');
+          const err = document.createElement('span');
+          err.className = 'error-msg';
+          err.textContent = msg;
+          group.appendChild(err);
+          hasError = true;
+        }
+      });
+
+      if (hasError) return;
+
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      this.reset();
+    });
+
+    // Mobile hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const drawer = document.getElementById('mobileDrawer');
+      const isOpen = drawer.classList.toggle('open');
+      this.setAttribute('aria-expanded', isOpen);
+    });
+
+    // ── SEARCH DROPDOWN ──
+    const navSearch = document.getElementById('navSearch');
+    const dropdown  = document.getElementById('searchDropdown');
+
+    const searchItems = [
+      { title: 'Address',        snippet: 'Circuit Makati, Barangay Carmona, Makati City',         icon: '📍', target: '#location' },
+      { title: 'Opening Hours',  snippet: 'Mon–Fri: 7AM–9PM · Sat–Sun: 8AM–10PM',                 icon: '🕐', target: '#location' },
+      { title: 'Parking & Access', snippet: 'Free parking · MRT-3 Magallanes Station',             icon: '🚗', target: '#location' },
+      { title: 'Phone',          snippet: '+63 2 800 1234',                                         icon: '📞', target: '#contact'  },
+      { title: 'Email',          snippet: 'hello@slowpoorcafe.com',                                 icon: '✉️', target: '#contact'  },
+      { title: 'Table Reservation', snippet: 'Book a table or send us a message',                  icon: '🪑', target: '#contact'  },
+      { title: 'Catering & Events', snippet: 'Private events and catering inquiries',               icon: '🎉', target: '#contact'  },
+    ];
+
+    function highlight(text, q) {
+      return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),
+        '<span style="color:#6b4226;font-weight:600;">$1</span>');
+    }
+
+    function showDropdown(q) {
+      if (!q) { dropdown.style.display = 'none'; return; }
+      const results = searchItems.filter(i =>
+        i.title.toLowerCase().includes(q) || i.snippet.toLowerCase().includes(q)
+      );
+      if (!results.length) {
+        dropdown.innerHTML = '<div style="padding:16px;text-align:center;color:#9a8778;font-size:0.88rem;">No results found for "<strong>' + q + '</strong>"</div>';
+      } else {
+        dropdown.innerHTML = results.map((item, i) => `
+          <div data-i="${i}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;border-bottom:1px solid #f0ebe3;" onmouseover="this.style.background='#faf7f2'" onmouseout="this.style.background=''">
+            <span style="font-size:1.2rem;flex-shrink:0;">${item.icon}</span>
+            <div style="display:flex;flex-direction:column;">
+              <span style="font-size:0.9rem;font-weight:500;color:#2b1a0f;">${highlight(item.title, q)}</span>
+              <span style="font-size:0.78rem;color:#9a8778;">${highlight(item.snippet, q)}</span>
+            </div>
+          </div>
+        `).join('');
+        dropdown.querySelectorAll('[data-i]').forEach(el => {
+          el.addEventListener('click', () => {
+            const item = results[+el.dataset.i];
+            document.querySelector(item.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            dropdown.style.display = 'none';
+            navSearch.value = '';
+          });
+        });
+      }
+      dropdown.style.display = 'block';
+    }
+
+    navSearch.addEventListener('input', e => showDropdown(e.target.value.trim().toLowerCase()));
+    navSearch.addEventListener('keydown', e => {
+      if (e.key === 'Escape') dropdown.style.display = 'none';
+      if (e.key === 'Enter') {
+        const first = dropdown.querySelector('[data-i]');
+        if (first) first.click();
+      }
+    });
+    document.addEventListener('click', e => {
+      if (!navSearch.contains(e.target) && !dropdown.contains(e.target))
+        dropdown.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
