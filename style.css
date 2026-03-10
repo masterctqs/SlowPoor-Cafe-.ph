@@ -1,0 +1,720 @@
+/* ============================================================
+   SlowPoor Café – style.css
+   Combined: Classmate's design (Menu.zip) + My work (menu_updated)
+   ============================================================ */
+
+:root {
+  --hero-bg:   #737270;
+  --white:     #ffffff;
+  --black:     #000000;
+  --dark:      #1a1a1a;
+  --muted:     #555555;
+  --muted-lt:  #666666;
+  --surface:   #EBEBEB;
+  --border:    #eeeeee;
+  --tag-bg:    #ACADAC;
+  --nav-bg:    #2b1a0f;
+  --nav-link:  rgba(245,240,232,0.75);
+  --accent:    #333333;
+  --table-hd:  #737270;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background: #faf7f2;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+img { display: block; width: 100%; }
+a   { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   NAVBAR – exact same as Location page
+   ============================================================ */
+
+/* ── Styles for .header/.nav used by Home, About Us, Reservation pages ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  box-shadow: 0 2px 12px rgba(43,26,15,0.18);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5f0e8;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 50px;
+  height: 50px;
+  background: #c9a87c;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.75);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background .2s, color .2s;
+}
+
+.nav-links a:hover {
+  background: rgba(201,168,124,0.15);
+  color: #f5f0e8;
+}
+
+.nav-links a.active {
+  color: #c9a87c;
+  font-weight: 500;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,124,0.2);
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+.nav-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.83rem;
+  color: #f5f0e8;
+  width: 110px;
+  padding: 0;
+}
+
+.nav-search input::placeholder { color: rgba(245,240,232,0.4); }
+
+.search-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Reservation section */
+.reservation-section {
+  max-width: 800px;
+  margin: 40px auto 50px;
+  padding: 0 20px;
+}
+
+.reservation-section h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.reservation-section .sub {
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Times New Roman', Times, serif;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #c9a87c;
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+.form-submit button {
+  background: var(--black);
+  color: var(--white);
+  padding: 12px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  transition: background-color 0.2s;
+}
+
+.form-submit button:hover { background: #333; }
+
+@media (max-width: 820px) {
+  .nav { padding: 0 20px; }
+  .nav-links, .nav-search { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(43,26,15,0.18);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+  background: #c9a87c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5f0e8;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.navbar-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.75);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background .2s, color .2s;
+}
+
+.navbar-links a:hover {
+  background: rgba(201,168,124,0.15);
+  color: #f5f0e8;
+}
+
+.navbar-links a.active {
+  color: #c9a87c;
+  font-weight: 500;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,124,0.2);
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+.navbar-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.83rem;
+  color: #f5f0e8;
+  width: 110px;
+  padding: 0;
+}
+
+.navbar-search input::placeholder { color: rgba(245,240,232,0.4); }
+
+.navbar-search svg {
+  width: 15px;
+  height: 15px;
+  fill: rgba(201,168,124,0.7);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SEARCH DROPDOWN  (Menu + Location pages)
+   ============================================================ */
+
+.search-dropdown {
+  position: fixed;
+  top: 64px;
+  right: 40px;
+  background: #fff;
+  border: 1px solid #e8e3db;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(43,26,15,0.15);
+  z-index: 200;
+  min-width: 280px;
+  max-height: 360px;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-dropdown.visible { display: block; }
+
+.search-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0ebe3;
+  transition: background .15s;
+  text-decoration: none;
+  color: #3d2b1f;
+}
+
+.search-dropdown-item:last-child { border-bottom: none; }
+.search-dropdown-item:hover { background: #faf7f2; }
+
+/* Menu page: thumbnail image */
+.search-dropdown-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Location page: icon circle */
+.search-item-icon {
+  width: 36px;
+  height: 36px;
+  background: #2b1a0f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-item-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #c9a87c;
+}
+
+.search-item-info { display: flex; flex-direction: column; }
+.search-item-name { font-size: 0.9rem; font-weight: 500; color: #2b1a0f; }
+.search-item-meta { font-size: 0.78rem; color: #9a8778; line-height: 1.5; }
+
+.search-no-results {
+  padding: 16px;
+  text-align: center;
+  color: #9a8778;
+  font-size: 0.88rem;
+}
+
+.search-highlight { color: #6b4226; font-weight: 600; }
+
+/* Highlight pulse animation (Location page) */
+@keyframes searchPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201,168,124,0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(201,168,124,0); }
+  100% { box-shadow: 0 0 0 0 rgba(201,168,124,0); }
+}
+
+.search-pulse {
+  animation: searchPulse 1.5s ease-out 2;
+  outline: 2px solid #c9a87c;
+  border-radius: 12px;
+}
+
+/* ============================================================
+   HERO / MAIN BANNER
+   ============================================================ */
+.main {
+  background-color: var(--hero-bg);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  padding: 55px 20px 40px;
+}
+
+.content {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.content h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 15px;
+  opacity: 0.88;
+  margin-bottom: 22px;
+}
+
+.Explorem {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 25px;
+  display: inline-block;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  transition: background-color 0.2s;
+}
+
+.Explorem:hover { background-color: #333; }
+
+.category {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.otherbtn {
+  background-color: var(--tag-bg);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  min-width: 95px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+/* ============================================================
+   SPECIALTIES SECTION
+   ============================================================ */
+.specialties {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.specialties h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--muted-lt);
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.order-btn {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 12px 60px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  font-family: 'Times New Roman', Times, serif;
+  transition: background-color 0.2s;
+}
+
+.order-btn:hover { background-color: #333; }
+
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.tab-btn {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  color: var(--dark);
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background: var(--white);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+
+.card.hidden { display: none; }
+
+.image-placeholder {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.card-img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-info p {
+  margin: 5px 0 0;
+  color: var(--dark);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* ============================================================
+   IMAGE MAP SECTION
+   ============================================================ */
+.imagemap-section {
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.imagemap-section img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.imagemap-caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FULL MENU PRICE TABLE
+   ============================================================ */
+.table-section {
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.table-section h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead tr {
+  background: var(--table-hd);
+  color: var(--white);
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) { background: #f7f5f3; }
+
+tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #e8e4df;
+}
+
+tbody tr:hover { background: #eeebe7; }
+
+/* ============================================================
+   ALLERGEN SECTION
+   ============================================================ */
+.allergen-section {
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.allergen-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.allergen-section .allergen-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.allergen-section ul {
+  list-style: disc;
+  padding-left: 22px;
+  columns: 2;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 2;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--surface);
+  border-top: 1px solid #ddd;
+  padding: 18px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer-inner a { margin: 0 10px; transition: color 0.2s; }
+.footer-inner a:hover { color: var(--dark); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .form-grid      { grid-template-columns: 1fr; }
+  .allergen-section ul { columns: 1; }
+}
+
+@media (max-width: 820px) {
+  .navbar { padding: 0 20px; }
+  .navbar-links, .navbar-search { display: none; }
+  .search-dropdown { right: 16px; left: 16px; min-width: unset; }
+}
+
+@media (max-width: 520px) {
+  .grid-container { grid-template-columns: 1fr; }
+  .category       { flex-wrap: wrap; }
+  .footer-inner   { flex-direction: column; text-align: center; }
+}
